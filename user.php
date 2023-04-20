@@ -12,7 +12,8 @@ $sql= "INSERT INTO user (name,email,mobile,password)
 
 $result=mysqli_query($con,$sql);
 if($result){
-echo "Data Inserted!";
+// echo "Data Inserted!";
+header('location:display.php');
 }  else{
         
         die (mysqli_error($con));
