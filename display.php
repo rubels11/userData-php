@@ -53,6 +53,12 @@ if ($result)
    <td>'.$email.' </td>
    <td>'.$mobile.' </td>
    <td>'.$password.' </td>
+
+   <td>
+<button type="button" class="btn btn-success"> <a href="update.php?updateid='.$id,'" class="text-light"> Update</button>
+   <button type="button" class="btn btn-danger"><a href="delete.php?deleteid='.$id.'"class="text-light"> Delete</button>
+   </td>
+
  </tr>';
 }
 

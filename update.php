@@ -1,18 +1,27 @@
 <?php
 
 include 'connect.php';
+$id=$_GET['updateid'];
+$sql = "SELECT * FROM `user` WHERE id='$id'";
+$result=mysqli_query($con,$sql);
+$row = mysqli_fetch_assoc($result);
+   $name = $row ['name'];
+   $email = $row ['email'];
+   $mobile = $row ['mobile'];
+   $password = $row ['password'];
+
 if(isset($_POST['submit'])){
 $name=$_POST['name'];
 $email=$_POST['email'];
 $mobile=$_POST['mobile'];
 $password=$_POST['password'];
 
-$sql= "INSERT INTO user (name,email,mobile,password)
-       VALUES ('$name', '$email', '$mobile', '$password')";
+$sql = "UPDATE user SET name='$name', email='$email', mobile='$mobile', password='$password' WHERE id=$id";
+
 
 $result=mysqli_query($con,$sql);
 if($result){
-// echo "Data Inserted!";
+//echo "Data updated!";
 header('location:display.php');
 }  else{
         
@@ -41,29 +50,29 @@ header('location:display.php');
   <div class="form-group">
     <label >Name</label>
     <input type="text" class ="form-control"
-    placeholder="Enter Name"
-    name ="name">
+    placeholder="Enter Name" 
+    name ="name" value =<?php echo $name ?>
   </div>
   <div class="form-group">
     <label >Email</label>
     <input type="email" class ="form-control"
     placeholder="Enter email"
-    name ="email">
+    name ="email" value =<?php echo $email ?>>
   </div>
   <div class="form-group">
     <label >Mobile</label>
     <input type="text" class ="form-control"
     placeholder="Enter Mobile No"
-    name ="mobile">
+    name ="mobile" value =<?php echo $mobile ?>>
   </div>
   <div class="form-group">
     <label >Enter Password</label>
     <input type="text" class ="form-control"
     placeholder="Enter Password"
-    name ="password">
+    name ="password" value =<?php echo $password ?>>
   </div>
   
-  <button type="submit" class="btn btn-primary" name="submit" >Submit</button>
+  <button type="submit" class="btn btn-primary" name="submit" >update</button>
 </form>
 
    </div>
